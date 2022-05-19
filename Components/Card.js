@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { YoutubeEmbed } from './youtubeEmbed';
+import { YoutubeEmbed } from './YoutubeEmbed';
 import { Button } from '@mui/material';
 
 export default function ReviewCard({video}) {
