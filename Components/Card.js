@@ -15,26 +15,16 @@ export default function ReviewCard({ video }) {
 	const { id, link, title, thumbnails, url, channelTitle, info } = video;
 
 	return (
-		<Card sx={{ maxWidth: 853, width: 853 }}>
-			<CardHeader
-				action={
-					<IconButton aria-label="settings">
-						<MoreVertIcon />
-					</IconButton>
-				}
-				title={title}
-				subheader={channelTitle}
-			/>
+		<Card sx={{ maxWidth: 853, width: 853, backgroundColor:'rgba(230, 230, 230, 1)' }}>
+
 			<YoutubeEmbed url={url} />
 
 			<CardContent>
 				<Typography variant="body2" color="text.secondary">
-					This impressive paella is a perfect party dish and a fun meal to cook
-					together with your guests. Add 1 cup of frozen peas along with the mussels,
-					if you like.
+					{title}
 				</Typography>
 			</CardContent>
-			<CardActions justify="center" >
+			<CardActions justify="center" sx={{flex:1, justifyContent:'center', display:'table-row'}}>
 				<IconButton aria-label="share">
 
 					<a
@@ -42,7 +32,7 @@ export default function ReviewCard({ video }) {
 						filename="dep"
 						without
 						rel="noreferrer"
-						href={info.video.url}
+						href={info.video && info.video.url}
 						download={title}
 					>
 						<Button fullWidth variant="outlined">
@@ -53,7 +43,7 @@ export default function ReviewCard({ video }) {
 						target="_blank"
 						without
 						rel="noreferrer"
-						href={info.audio.url}
+						href={info.audio && info.audio.url}
 						download={title}
 					>
 						<Button fullWidth variant="outlined">
