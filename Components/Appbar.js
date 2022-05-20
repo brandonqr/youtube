@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react'
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -26,6 +27,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Avatar from '@mui/material/Avatar';
 import  Image  from 'next/image';
 import ReviewCard from './Card';
+import { TextField } from '@mui/material';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -70,10 +72,12 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function PrimarySearchAppBar() {
  const [inputValue, setInputValue] = React.useState('')
+const [keyPress, setKeyPress] = useState('')
  const [videos, setVideos] = React.useState([])
 
 
 const handleKeyDown=async(e)=>{
+ setKeyPress(e.key)
  if(e.key!=='Enter')return;
   const {data} = await axios.get(`/api/search?q=${inputValue}`)
   // const videos=data.filter(da=>da.info.filter(d=>!d.mimeType.includes('mp4a.40.2') ))
@@ -200,6 +204,7 @@ const handleKeyDown=async(e)=>{
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
+        <h5>{keyPress}</h5>
         <Toolbar>
           <IconButton
             size="large"
@@ -218,6 +223,7 @@ const handleKeyDown=async(e)=>{
           >
             MUI
           </Typography>
+          
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -230,7 +236,9 @@ const handleKeyDown=async(e)=>{
               onKeyDown={handleKeyDown}
               onChange={e=>setInputValue(e.target.value)}
             />
+            
           </Search>
+          
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">

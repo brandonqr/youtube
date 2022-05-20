@@ -34,7 +34,7 @@ export default function ReviewCard({ video }) {
 					if you like.
 				</Typography>
 			</CardContent>
-			<CardActions justify="center">
+			<CardActions justify="center" >
 				<IconButton aria-label="share">
 
 					<a
